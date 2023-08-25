@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AdminTiaki';
+
+  checkCondition(value: number): boolean {
+    return value > 10;
+  }
+  
 }

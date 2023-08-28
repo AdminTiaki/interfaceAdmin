@@ -1,0 +1,25 @@
+name: Déplacer les tickets Jira
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  move-ticket:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v2
+    
+    - name: Déplacer le ticket Jira
+      env:
+        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        JIRA_BASE_URL: "https://tiaki-jira.atlassian.net"
+      run: |
+       ISSUE_KEY=$(grep -oE "PROJ-\d+" $GITHUB_WORKSPACE/path/vers/votre/fichier.txt)
+       echo "Clé du ticket : $ISSUE_KEY"
+        
+      # Appeler l'API Jira pour mettre à jour l'état du ticket
+      curl -D- -u votre-email@domaine.com:$JIRA_API_TOKEN -X PUT --data '{"transition":{"id":"ID_DE_TRANSITION"}}' -H "Content-Type: application/json" $JIRA_BASE_URL/rest/api/2/issue/$ISSUE_KEY/transitions

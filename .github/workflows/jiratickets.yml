@@ -22,4 +22,4 @@ jobs:
        echo "Clé du ticket : $ISSUE_KEY"
         
       # Appeler l'API Jira pour mettre à jour l'état du ticket
-      curl -D- -u votre-email@domaine.com:$JIRA_API_TOKEN -X PUT --data '{"transition":{"id":"ID_DE_TRANSITION"}}' -H "Content-Type: application/json" $JIRA_BASE_URL/rest/api/2/issue/$ISSUE_KEY/transitions
+      curl -D- -u xavierpincon@gmail.com:$JIRA_API_TOKEN -X PUT --data '{"transition":{"id":"ID_DE_TRANSITION"}}' -H "Content-Type: application/json" $JIRA_BASE_URL/rest/api/2/issue/$ISSUE_KEY/transitions

@@ -28,7 +28,7 @@ jobs:
           npm install -g sonarqube-scanner
           sonar-scanner -Dsonar.projectKey=AdminTiaki_interfaceAdmin -Dsonar.organization=admintiaki -Dsonar.host.url=https://sonarcloud.io -Dsonar.sources=.
         env:
-          SONAR_TOKEN: ${{ secrets.SONARTIAKI }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
 
           

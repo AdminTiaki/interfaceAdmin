@@ -23,16 +23,12 @@ jobs:
       - run: npm ci
       - run: npm run test:prod
 
-      
       - name: SonarCloud Analysis
-        run: npm install -g sonarqube-scanner
+        run: |
+          npm install -g sonarqube-scanner
+          sonar-scanner -Dsonar.projectKey=AdminTiaki_interfaceAdmin -Dsonar.organization=AdminTiaki -Dsonar.sources=.
         env:
           SONAR_TOKEN: ${{ secrets.SONARTIAKI }}
-        # You might need to adjust the projectKey and organizationKey
-        # based on your SonarCloud configuration.
-        # For public repositories, the organizationKey can be set to "github" by default.
-        # For private repositories, use the organizationKey associated with your SonarCloud account.
-        # projectKey should be a unique identifier for your project on SonarCloud.
-        # More information: https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/
-          run: sonar-scanner -Dsonar.projectKey=AdminTiaki_interfaceAdmin -Dsonar.organization=AdminTiaki -Dsonar.sources=.
 
+
+          

@@ -2,9 +2,9 @@ name: 🚀 Run Unit Tests and SonarCloud Analysis
 
 on:
   push:
-    branches: [ "preProd" ]
+    branches: [ "preProd", "main" ]
   pull_request:
-    branches: [ "preProd" ]
+    branches: [ "preProd", "main" ]
 
 jobs:
   build:

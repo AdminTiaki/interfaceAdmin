@@ -26,7 +26,7 @@ jobs:
       - name: SonarCloud Analysis
         run: |
           npm install -g sonarqube-scanner
-          sonar-scanner -Dsonar.projectKey=AdminTiaki_interfaceAdmin -Dsonar.organization=AdminTiaki -Dsonar.sources=.
+          sonar-scanner -Dsonar.projectKey=AdminTiaki_interfaceAdmin -Dsonar.organization=admintiaki -Dsonar.sources=https://sonarcloud.io/api/project_badges/measure?project=AdminTiaki_interfaceAdmin&metric=alert_status.
         env:
           SONAR_TOKEN: ${{ secrets.SONARTIAKI }}
 

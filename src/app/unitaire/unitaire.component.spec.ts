@@ -21,7 +21,7 @@ describe('UnitaireComponent', () => {
 
   it('should return true if value is greater than 10', () => {
     const result = component.checkConditionUnitaireComponent(15);
-    expect(result).toBe(false);
+    expect(result).toBe(true);
   });
 
 });

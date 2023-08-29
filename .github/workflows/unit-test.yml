@@ -22,6 +22,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run test:prod
+
       
       - name: SonarCloud Analysis
         run: npm install -g sonarqube-scanner

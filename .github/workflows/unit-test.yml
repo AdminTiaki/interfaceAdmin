@@ -23,6 +23,18 @@ jobs:
       - run: npm ci
       - run: npm run test:prod
 
+  # Pour empêcher le push si les tests sont invalides
+  check-tests-status:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Check Test Status
+        run: exit $(if [[ ${{ job.status }} == 'failure' ]]; then echo 1; else echo 0; fi)
+
+  sonarcloud-analysis:
+    runs-on: ubuntu-latest
+    needs: check-tests-status
+    steps:
       - name: SonarCloud Analysis
         run: |
           npm install -g sonarqube-scanner

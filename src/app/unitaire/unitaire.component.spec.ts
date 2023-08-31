@@ -24,4 +24,19 @@ describe('UnitaireComponent', () => {
     expect(result).toBe(true);
   });
 
+  it('should return true if value is greater than 10', () => {
+    const result = component.checkConditionUnitaireComponent(14);
+    expect(result).toBe(true);
+  });
+
+  it('should return true if value is greater than 10', () => {
+    const result = component.checkConditionUnitaireComponent(11);
+    expect(result).toBe(true);
+  });
+
+  it('should return true if value is greater than 10', () => {
+    const result = component.checkConditionUnitaireComponent(20);
+    expect(result).toBe(true);
+  });
+
 });

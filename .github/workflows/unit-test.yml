@@ -27,18 +27,7 @@ jobs:
       - run: npm ci
       - run: npm run test:prod
 
-      - name: Check status
-        run: |
-          if [[ $? -eq 0 ]]; then
-            # Si le code de retour est 0, les tests ont réussi
-            echo "Tests unitaires réussis."
-             echo "::set-output name=status::success"  # Définir le statut comme "success"
-          else
-        
-            echo "Échec des tests unitaires."
-            echo "::set-output name=status::failure"  # Définir le statut comme "failure"
-            fi
-        id: check-status     
+         
     
     
       - name: SonarCloud Analysis

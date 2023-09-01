@@ -1,13 +1,14 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# Ne pas oublier de rajouter des informations dans package.json (Dans la balise scripts) pour la bonne exécution des tests
+# "build:prod": "ng build --prod", 
+# "test:prod": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
 
-name: 🚀 Run Unit Tests on Push
+name: 🚀 Run Unit Tests and SonarCloud Analysis
 
 on:
   push:
-    branches: [ "preProd" ]
+    branches: ["preProd"]
   pull_request:
-    branches: [ "preProd" ]
+    branches: ["preProd"]
 
 jobs:
   build:
@@ -25,6 +26,26 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run test:prod
-      # - run: npm run lint
 
-      
+      - name: Check status
+        run: |
+          if [[ $? -eq 0 ]]; then
+            # Si le code de retour est 0, les tests ont réussi
+            echo "Tests unitaires réussis."
+             echo "::set-output name=status::success"  # Définir le statut comme "success"
+          else
+        
+            echo "Échec des tests unitaires."
+            echo "::set-output name=status::failure"  # Définir le statut comme "failure"
+            fi
+        id: check-status     
+    
+    
+      - name: SonarCloud Analysis
+        run: |
+          npm install -g sonarqube-scanner
+          sonar-scanner -Dsonar.projectKey=AdminTiaki_interfaceAdmin -Dsonar.organization=admintiaki -Dsonar.host.url=https://sonarcloud.io -Dsonar.sources=. -Dsonar.javascript.lcov.reportPaths=coverage/admin-tiaki/
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+

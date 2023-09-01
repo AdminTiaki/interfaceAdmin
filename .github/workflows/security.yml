@@ -3,10 +3,10 @@ name: 🚀 Security Scan with Snyk
 on:
   push:
     branches:
-      - main
+      - test-tickets
   pull_request:
     branches:
-      - main
+      - test-tickets
 
 jobs:
   security-scan:

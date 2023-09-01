@@ -29,7 +29,7 @@
     needs: build
     steps:
       - name: Check Test Status
-        run: exit $(if [[ ${{ job.status }} == 'failure' ]]; then echo 1; else echo 0; fi)
+        <!-- run: exit $(if [[ ${{ job.status }} == 'failure' ]]; then echo 1; else echo 0; fi) -->
         </article>
     </body>
 </html>

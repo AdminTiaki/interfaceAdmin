@@ -1,12 +1,21 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+describe('AppComponent', () => {  
+
+  let fixture: ComponentFixture<AppComponent>;
+  let app: AppComponent;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      declarations: [AppComponent]
+    });
+
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.componentInstance;
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -20,10 +29,19 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('AdminTiaki');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('AdminTiaki app is running!');
+  it('should return true if value is greater than 10', () => {
+    const result = app.checkCondition(15);
+    expect(result).toBe(true);
   });
+
+  it('should return false if value is less than or equal to 10', () => {
+    const result = app.checkCondition(8);
+    expect(result).toBe(false);
+  });
+
+
+
+
+
+
 });

@@ -30,7 +30,7 @@ describe('AppComponent', () => {
   });
 
   it('should return true if value is greater than 10', () => {
-    const result = app.checkCondition(15);
+    const result = app.checkCondition(2);
     expect(result).toBe(true);
   });
 

@@ -25,8 +25,8 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp.cluster027.hosting.ovh.net
-          username: tiakiau
+          server: ftp.cluster000.hosting.toto.net
+          username: rondoudou
           password: ${{ secrets.test }}
-          local-dir: dist/admin-tiaki/ # This is the local directory to upload
-          server-dir: /admin/ # This is the remote directory on the server
+          local-dir: dist/rien/ # This is the local directory to upload
+          server-dir: /vide/ # This is the remote directory on the server
